@@ -1,11 +1,12 @@
-import express from "express"
+const express = require('express');
+const router = require('./Routes/authRoutes.js');
 
 const app = express();
 
 app.use(express.json());
 
-app.use('/', (req,res)=>{
-    res.send("yes Working links properly");
-});
 
-export default app;
+// Route handling
+app.use('/auth', router);      // Signup & login
+
+module.exports = app;
