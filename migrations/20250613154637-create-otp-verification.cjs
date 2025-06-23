@@ -16,7 +16,10 @@ module.exports = {
       email: {
         type: Sequelize.STRING,
         allowNull: false
-
+      },
+      purpose: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

@@ -59,10 +59,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    salt: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
     bio: DataTypes.STRING,
     description: DataTypes.STRING,
     profile_image_url: DataTypes.STRING,

@@ -1,4 +1,6 @@
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+dotenv.config()
 
 const authenticate = (req, res, next) => {
     // Extract the token from the Authorization header
@@ -10,7 +12,7 @@ const authenticate = (req, res, next) => {
         const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
         // Attach decoded payload to request object
-        req.user = decoded;
+        req.data = decoded;
         
         next(); // Proceed to the next middleware or route handler
     } catch {
@@ -19,4 +21,4 @@ const authenticate = (req, res, next) => {
     }
 };
 
-export default authenticate;
+module.exports = authenticate;

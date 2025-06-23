@@ -23,10 +23,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      salt: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
       bio: {
         type: Sequelize.STRING
       },

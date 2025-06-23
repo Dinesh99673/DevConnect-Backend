@@ -18,6 +18,6 @@ npx sequelize model:generate --name Chatroom_message --attributes chatroom_id:in
 npx sequelize db:migrate --config config/config.js
 
 In the `Followers` table, a check constraint is manually added:
-  CHECK (user_id <> follower_id) (user_id != follower_id)
+  CHECK (user_id <> follower_id) (user_id != follower_id).
 This prevents a user from following themselves.
 Not handled by Sequelize migration; add manually after deployment.
