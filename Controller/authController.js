@@ -76,8 +76,11 @@ const login = async (req, res) => {
     if (!match) return res.status(401).json({ msg: 'Invalid password' });
 
     // Generate JWT token with user id payload
-    const token = jwt.sign({ userId: user.user_id, time: (new Date).toDateString() }, process.env.JWT_SECRET_KEY);
-
+    const token = jwt.sign(
+      { userId: user.user_id },
+      process.env.JWT_SECRET_KEY,
+      { expiresIn: '30d' } // auto expiry
+    );
     // Send token in response
     res.json({ token, messagess:"Login successfull. Token sended" });
   } catch (error) {
@@ -176,7 +179,7 @@ const reset_password = async (req, res) => {
     const currentTimestamp = new Date()
     
     if(otpExpireAt<currentTimestamp){
-      return res.status(406).json({message:"OTP Expired", status:false})
+      return res.status(406).json({message:"OTP Expired try again later", status:false})
     }
 
     // 1. Check if user exist or not
